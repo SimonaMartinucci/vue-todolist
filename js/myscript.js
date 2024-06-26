@@ -10,11 +10,17 @@ createApp({
                 {text: "Lavare pavimento", done: true},
                 {text: "Fare spesa", done: false}
             ],
+            newTask: '',
         }
     },
     methods: {
         removeTask(indice) {
-            this.taskList.splice(indice, 1)
+            this.taskList.splice(indice, 1);
+        },
+
+        addTask() {
+            this.taskList.unshift({text: this.newTask, done: false}),
+            this.newTask = '';
         }
     }
 }).mount('#app');
