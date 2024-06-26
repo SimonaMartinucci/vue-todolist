@@ -13,5 +13,8 @@ createApp({
         }
     },
     methods: {
+        removeTask(indice) {
+            this.taskList.splice(indice, 1)
+        }
     }
 }).mount('#app');
