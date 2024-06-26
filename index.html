@@ -29,6 +29,7 @@
             <div class="input-wrapper">
                 <input type="text" placeholder="Inserisci una nuova task" v-model="newTask" @keyup.enter="addTask">
                 <button @click="addTask">Aggiungi</button>
+                <div class="error" v-if="inputError">La task deve avere un minimo di 5 caratteri</div>
             </div>
 
             <!-- parte lista -->
@@ -39,6 +40,8 @@
                         <i class="fa-solid fa-xmark" @click="removeTask(index)"></i>
                     </li>
                 </ul>
+                <div class="no-tasks" v-if="taskList.length <= 0 ? true : false">
+                    Non ci sono pi&ugrave; task per oggi <i class="fa-regular fa-thumbs-up"></i></div>
             </div>
 
         </div>
