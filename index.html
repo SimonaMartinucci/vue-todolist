@@ -34,8 +34,8 @@
             <!-- parte lista -->
             <div class="list-wrapper">
                 <ul>
-                    <li>
-                        <span>Fare blabla</span>
+                    <li v-for="(task, index) in taskList">
+                        <span :class="task.done ? 'done' : ''">{{task.text}}</span>
                         <i class="fa-solid fa-xmark"></i>
                     </li>
                 </ul>
