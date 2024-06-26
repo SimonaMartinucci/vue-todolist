@@ -21,6 +21,14 @@ createApp({
         addTask() {
             this.taskList.unshift({text: this.newTask, done: false}),
             this.newTask = '';
+        },
+
+        statusTask(indice) {
+            if(this.taskList[indice].done === true) {
+                this.taskList[indice].done = false;
+            }else {
+                this.taskList[indice].done = true;
+            }
         }
     }
 }).mount('#app');

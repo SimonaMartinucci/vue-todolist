@@ -34,8 +34,8 @@
             <!-- parte lista -->
             <div class="list-wrapper">
                 <ul>
-                    <li v-for="(task, index) in taskList">
-                        <span :class="task.done ? 'done' : ''">{{task.text}}</span>
+                    <li v-for="(task, index) in taskList" :key="index">
+                        <span :class="task.done ? 'done' : ''" @click="statusTask(index)">{{task.text}}</span>
                         <i class="fa-solid fa-xmark" @click="removeTask(index)"></i>
                     </li>
                 </ul>
