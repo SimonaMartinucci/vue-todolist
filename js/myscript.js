@@ -37,11 +37,7 @@ createApp({
 
         statusTask(indice) {
             // cambio valore di 'done' sulla base dei click
-            if(this.taskList[indice].done === true) {
-                this.taskList[indice].done = false;
-            }else {
-                this.taskList[indice].done = true;
-            }
+            this.taskList[indice].done = !this.taskList[indice].done;
         },
 
     }

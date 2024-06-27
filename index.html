@@ -12,40 +12,42 @@
     <title>vue-todolist</title>
 </head>
 <body>
+    <div id="app">
+        <!-- HEADER -->
+        <header>
+            <h1>
+                <i class="fa-solid fa-clipboard-list icon-1"></i>
+                LA TUA TODOLIST
+                <i class="fa-solid fa-clipboard-list icon-2"></i>
+            </h1>
+        </header>
 
-    <!-- HEADER -->
-    <header>
-        <h1>
-            <i class="fa-solid fa-clipboard-list icon-1"></i>
-            LA TUA TODOLIST
-            <i class="fa-solid fa-clipboard-list icon-2"></i>
-        </h1>
-    </header>
+        <!-- MAIN -->
+        <main>
+            <div class="container">
+                <!-- parte input -->
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Inserisci una nuova task" v-model="newTask" @keyup.enter="addTask">
+                    <button @click="addTask">Aggiungi</button>
+                    <div class="error" v-if="inputError">La task deve avere un minimo di 5 caratteri</div>
+                </div>
 
-    <!-- MAIN -->
-    <main>
-        <div id="app" class="container">
-            <!-- parte input -->
-            <div class="input-wrapper">
-                <input type="text" placeholder="Inserisci una nuova task" v-model="newTask" @keyup.enter="addTask">
-                <button @click="addTask">Aggiungi</button>
-                <div class="error" v-if="inputError">La task deve avere un minimo di 5 caratteri</div>
+                <!-- parte lista -->
+                <div class="list-wrapper">
+                    <ul>
+                        <li v-for="(task, index) in taskList" :key="index">
+                            <span :class="task.done ? 'done' : ''" @click="statusTask(index)">{{task.text}}</span>
+                            <i class="fa-solid fa-xmark" @click="removeTask(index)"></i>
+                        </li>
+                    </ul>
+                    <div class="no-tasks" v-if="taskList.length <= 0 ? true : false">
+                        Non ci sono pi&ugrave; task per oggi <i class="fa-regular fa-thumbs-up"></i></div>
+                </div>
+
             </div>
-
-            <!-- parte lista -->
-            <div class="list-wrapper">
-                <ul>
-                    <li v-for="(task, index) in taskList" :key="index">
-                        <span :class="task.done ? 'done' : ''" @click="statusTask(index)">{{task.text}}</span>
-                        <i class="fa-solid fa-xmark" @click="removeTask(index)"></i>
-                    </li>
-                </ul>
-                <div class="no-tasks" v-if="taskList.length <= 0 ? true : false">
-                    Non ci sono pi&ugrave; task per oggi <i class="fa-regular fa-thumbs-up"></i></div>
-            </div>
-
-        </div>
-    </main>
+        </main>
+    </div>
+    
 
     <!-- funzioni js -->
     <script type="text/javascript" src="js/functions.js">
